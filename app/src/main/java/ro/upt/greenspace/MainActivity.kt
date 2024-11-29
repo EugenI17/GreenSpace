@@ -48,8 +48,8 @@ class MainActivity : ComponentActivity() {
         ) {
           NavHost(navController = navController, startDestination = "greenPage") {
             composable("greenPage") { GreenPage(navController) }
-            composable("addHome") { AddHomeScreen() }
-            composable("viewHomes") { ViewHomesScreen() }
+            composable("addHome") { AddHomeScreen(navController) }
+            composable("viewHomes") { ViewHomesScreen(navController) }
           }
         }
       }
@@ -154,7 +154,9 @@ class MainActivity : ComponentActivity() {
             )
         ) {
           Button(
-            onClick = { /* Add functionality */ },
+            onClick = {
+              navController.navigate("viewHomes")
+            },
             modifier = Modifier
               .padding(2.dp)
               .width(buttonWidth),
